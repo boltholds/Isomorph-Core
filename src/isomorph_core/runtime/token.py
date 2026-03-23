@@ -9,3 +9,8 @@ class ExecutionToken(BaseModel):
     current_node_id: str
     payload: dict[str, Any] = Field(default_factory=dict)
     parent_token_id: str | None = None
+    source_node_id: str | None = None
+
+    foreach_group_id: str | None = None
+    foreach_index: int | None = None
+    foreach_total: int | None = None

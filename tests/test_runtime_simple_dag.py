@@ -1,3 +1,7 @@
+import asyncio
+import pytest
+
+
 from isomorph_core.actions.result import ActionResult
 from isomorph_core.actions.registry import ActionRegistry
 from isomorph_core.compiler.planner import WorkflowPlanner
@@ -14,6 +18,7 @@ class AddOneAction:
         return ActionResult(outputs={"value": value + 1})
 
 
+@pytest.mark.asyncio
 async def test_runtime_simple_dag():
     registry = ActionRegistry()
     registry.register("add_one", AddOneAction)
