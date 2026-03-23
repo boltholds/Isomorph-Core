@@ -71,7 +71,7 @@ async def test_runtime_join_all_waits_for_all_upstreams():
 
     result = await runtime.run(plan, {})
 
-    assert result["total"] == 42
+    assert result.outputs["total"] == 42
 
     join_started_events = [
         event for event in runtime_bus.events

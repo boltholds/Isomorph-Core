@@ -41,4 +41,4 @@ async def test_runtime_simple_dag():
     runtime = WorkflowRuntime(registry)
 
     result = await runtime.run(plan, {"value": 1})
-    assert result["value"] == 3
+    assert result.outputs["value"] == 3

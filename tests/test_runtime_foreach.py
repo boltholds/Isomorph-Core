@@ -62,8 +62,8 @@ async def test_runtime_foreach_spawns_child_tokens():
     runtime = WorkflowRuntime(registry, runtime_bus=runtime_bus)
 
     result = await runtime.run(plan, {})
-    assert result["value"] in {2, 4, 6}
-    assert result["total"] == 3
+    assert result.outputs["value"] in {2, 4, 6}
+    assert result.outputs["total"] == 3
 
     worker_completed = [
         event for event in runtime_bus.events

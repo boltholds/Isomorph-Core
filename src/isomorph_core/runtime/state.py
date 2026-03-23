@@ -6,6 +6,12 @@ class ExecutionState(BaseModel):
     execution_id: str
     workflow_id: str
     node_states: dict[str, NodeRunState] = Field(default_factory=dict)
-    input_buffers: dict[str, dict] = Field(default_factory=dict)
+
+    # target_node_id -> source_node_id -> payload
+    input_buffers: dict[str, dict[str, dict]] = Field(default_factory=dict)
+
+    # join_node_id -> group_id -> {index: payload}
+    collect_buffers: dict[str, dict[str, dict[int, dict]]] = Field(default_factory=dict)
+
     completed: bool = False
     failed: bool = False
